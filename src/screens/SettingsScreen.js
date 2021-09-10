@@ -14,6 +14,8 @@ const SettingsScreen = ({navigation}) =>{
   const toggleApliSwitch = () => setApli(prev => !prev)
   const [mail, setMail] = useState(false);
   const toggleMailSwitch = () => setMail(prev => !prev)
+  const [bib, setBib] = useState(false);
+  const toggleBibSwitch = () => setBib(prev => !prev)
 
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
@@ -33,14 +35,14 @@ const SettingsScreen = ({navigation}) =>{
         feedback: 5.0
     },
     {
-        name: "Mip-NeRF: A Multiscale Representation for Anti-Aliasing Neural Radiance Fields.",
-        authors: "Jonathan T. Barron, Ben Mildenhall, Matthew Tancik, Peter Hedman, Ricardo Martin-Brualla, Pratul P. Srinivasan ",
+        name: "Towards Real-World Blind Face Restoration with Generative Facial Prior",
+        authors: "Xintao Wang, Yu Li, Honglun Zhang, Ying Sha",
         doi: "DOI:2103.13415v2",
         feedback: 4.6
     },
     {
-        name: "Mip-NeRF: A Multiscale Representation for Anti-Aliasing Neural Radiance Fields.",
-        authors: "Jonathan T. Barron, Ben Mildenhall, Matthew Tancik, Peter Hedman, Ricardo Martin-Brualla, Pratul P. Srinivasan ",
+        name: "NerfingMVS: Guided Optimization of Neural Radiance Fields for Indoor Multi-view Stereo",
+        authors: "Yi Wei, Shaohui Liu, Yongming Rao, Wang Zhao, Jiwen Lu, Jie zhou",
         doi: "DOI:2103.13415v2",
         feedback: 4.2
     },
@@ -85,6 +87,18 @@ const SettingsScreen = ({navigation}) =>{
             textStyle={{ fontSize: 14}}
             />
         </View>
+        <View style={styles.bibSwitchCont}>
+            <Text style={styles.freqOptLabel}>
+                Al entrar a la biblioteca
+            </Text>
+            <Switch
+                trackColor={{ false: "#767577", true: "#f6cc47" }}
+                thumbColor={bib ? "#113293" : "#f4f3f4"}
+                ios_backgroundColor="#3e3e3e"
+                onValueChange={toggleBibSwitch}
+                value={bib}
+            />
+          </View>
 
         <View style={styles.dividerStyle}>
             <Text style={styles.dividerHeaderStyle}>
@@ -193,6 +207,13 @@ const styles = StyleSheet.create({
     margin: 15,
     zIndex: 8
   },
+  bibSwitchCont:{
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    margin: 15,
+    zIndex: 10
+  }
 
 });
 
