@@ -6,6 +6,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import {Picker} from 'native-base';
 import { Button, Text, Overlay, Divider } from 'react-native-elements';
 import RecomendationComponent from '../components/RecomendationComponent';
+import { Context } from '../context/RecomendacionesContext';
 
 const SettingsScreen = ({navigation}) =>{
 
@@ -16,6 +17,8 @@ const SettingsScreen = ({navigation}) =>{
   const toggleMailSwitch = () => setMail(prev => !prev)
   const [bib, setBib] = useState(false);
   const toggleBibSwitch = () => setBib(prev => !prev)
+
+  const {state, getRecommendation} = useContext(Context);
 
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
@@ -96,9 +99,8 @@ const SettingsScreen = ({navigation}) =>{
                 thumbColor={bib ? "#113293" : "#f4f3f4"}
                 ios_backgroundColor="#3e3e3e"
                 onValueChange={toggleBibSwitch}
-                value={bib}
-            />
-          </View>
+                value={bib}/>
+        </View>
 
         <View style={styles.dividerStyle}>
             <Text style={styles.dividerHeaderStyle}>
@@ -145,8 +147,8 @@ const SettingsScreen = ({navigation}) =>{
           nestedScrollEnabled={true}
           style={{ marginBottom: 0 }}
           showsVerticalScrollIndicator={false}
-          data={fakeDocs}
-          keyExtractor={(doc) => doc.feedback}
+          data={state.recommendations}
+          keyExtractor={(doc) => doc.location}
           renderItem={({ item }) => {
             return(
               <RecomendationComponent data={item}/>

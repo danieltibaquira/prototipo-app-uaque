@@ -1,31 +1,34 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { View, StyleSheet, ImageBackground } from 'react-native';
+import { View, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { Button, Text, Overlay, Input } from 'react-native-elements';
 import StarRating from 'react-native-star-rating';
+import { AntDesign } from '@expo/vector-icons';
 
 const RecomendationComponent = (props) =>{
 
   const document = props.data;
+  const [feedback, setFeedback] = useState(false);
 
   return(
     <View style={styles.contStyle}>
         <Text style={styles.title}>
-          {document.name}
+          {document.title}
         </Text>
         <Text style={styles.authors}>
-          {document.authors}
+          {document.author}
         </Text>
         <Text style={styles.doi}>
-          {document.doi}
+          Ubicación: {document.location}
         </Text>
-        <StarRating
-            maxStars={5}
-            rating={document.feedback}
-            starSize={32}
-            starStyle={styles.starsStyle}
-            buttonStyle={{ margin: 8 }}
-        />
+        <View style={styles.feedbackContainer}>
+          <TouchableOpacity style={{marginHorizontal: 24}} onPress={()=>console.log("uncool")}>
+            <AntDesign name="dislike1" size={32} color="#e32d55" />
+          </TouchableOpacity>
+          <TouchableOpacity style={{marginHorizontal: 24}} onPress={()=>console.log("cool")}>
+            <AntDesign name="like1" size={32} color="#47d679" />
+          </TouchableOpacity>
+        </View>
 
     </View>
   );
@@ -46,7 +49,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '600',
     fontStyle: 'italic',
-    marginHorizontal: 8
+    marginHorizontal: 8,
   },
   authors:{
     fontSize: 14,
@@ -58,6 +61,12 @@ const styles = StyleSheet.create({
   },
   starsStyle:{
     color: '#edce2e',
+  },
+  feedbackContainer:{
+    marginTop: 15,
+    marginVertical: 4,
+    flexDirection: 'row',
+    alignContent:'space-between'
   }
 
 });

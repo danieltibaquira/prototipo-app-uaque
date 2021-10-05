@@ -3,10 +3,19 @@ import { View, StyleSheet, ImageBackground } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { Button, Text, Overlay, Input } from 'react-native-elements';
 import CarouselCards from '../components/CarouselCard';
+import { Context } from '../context/RecomendacionesContext';
 
 const HomeScreen = ({navigation}) =>{
   const background = require('../../assets/home_background.jpeg');
   const [visi, setVisi] = useState(false);
+
+  const {state, getRecommendation} = useContext(Context);
+
+  useEffect(() =>{
+    getRecommendation();
+  }, [state.recommendations.length]);
+
+  // console.log(state.recommendations);
 
   const fakeDocs = [
     {
@@ -39,7 +48,7 @@ const HomeScreen = ({navigation}) =>{
         isVisible={visi}
         onBackdropPress={openRecModal}
         overlayStyle={styles.overlayStyle}>
-        <CarouselCards data={fakeDocs}/>
+        <CarouselCards data={state.recommendations}/>
       </Overlay>
     );
   }

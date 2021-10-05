@@ -26,9 +26,9 @@ const CarouselCards = (props) => {
         data={data}
         renderItem={CarouselCardItem}
         sliderWidth={280}
-        sliderHeight = {250}
+        sliderHeight = {280}
         itemWidth={280}
-        itemHeight={100}
+        itemHeight={120}
         inactiveSlideShift={0}
         useScrollView={true}
       />
