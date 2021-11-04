@@ -5,8 +5,10 @@ import { TextInput } from 'react-native-gesture-handler';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {Picker} from 'native-base';
 import { Button, Text, Overlay, Divider } from 'react-native-elements';
+
 import RecomendationComponent from '../components/RecomendationComponent';
 import { Context } from '../context/RecomendacionesContext';
+import navigate from '../rootNavigator'
 
 const SettingsScreen = ({navigation}) =>{
 
@@ -30,26 +32,7 @@ const SettingsScreen = ({navigation}) =>{
     {label: 'Cada 2 meses', value: 'Cada 2 meses'},
   ]);
 
-  const fakeDocs = [
-    {
-        name: "Mip-NeRF: A Multiscale Representation for Anti-Aliasing Neural Radiance Fields.",
-        authors: "Jonathan T. Barron, Ben Mildenhall, Matthew Tancik, Peter Hedman, Ricardo Martin-Brualla, Pratul P. Srinivasan ",
-        doi: "DOI:2103.13415v2",
-        feedback: 5.0
-    },
-    {
-        name: "Towards Real-World Blind Face Restoration with Generative Facial Prior",
-        authors: "Xintao Wang, Yu Li, Honglun Zhang, Ying Sha",
-        doi: "DOI:2103.13415v2",
-        feedback: 4.6
-    },
-    {
-        name: "NerfingMVS: Guided Optimization of Neural Radiance Fields for Indoor Multi-view Stereo",
-        authors: "Yi Wei, Shaohui Liu, Yongming Rao, Wang Zhao, Jiwen Lu, Jie zhou",
-        doi: "DOI:2103.13415v2",
-        feedback: 4.2
-    },
-  ];
+
 
   return(
     <View style={styles.viewStyle}>
@@ -143,6 +126,17 @@ const SettingsScreen = ({navigation}) =>{
               Historial
             </Text>
         </View>
+
+
+
+        <Button
+          title="Cuéntanos tus preferencias"
+          buttonStyle={styles.buttonOpenPref}
+          onPress={()=>navigation.navigate('Preferences')}
+        />
+
+
+
         <FlatList
           nestedScrollEnabled={true}
           style={{ marginBottom: 0 }}
@@ -215,6 +209,18 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     margin: 15,
     zIndex: 10
+  },
+  buttonOpenPref: {
+    width: 'auto',
+    height: 50,
+    backgroundColor: '#01339b',
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
+    marginVertical: 15
+  },
+  overlayStyle:{
+
   }
 
 });

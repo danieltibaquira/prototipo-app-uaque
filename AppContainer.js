@@ -6,6 +6,7 @@ import { createStackNavigator, HeaderBackButton } from '@react-navigation/stack'
 import { MaterialIcons } from '@expo/vector-icons';
 import  HomeScreen from './src/screens/HomeScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
+import PreferencesScreen from './src/screens/PreferencesScreen';
 import { navigationRef, navigate } from './src/rootNavigator';
 
 const Stack = createStackNavigator();
@@ -31,6 +32,16 @@ const stackOptions = (nombreScreen) => {
                 </TouchableOpacity>
             </View>
           )}
+        if(nombreScreen==='Preferences'){
+          return(
+           <View style={{ marginLeft: 20 }}>
+                <TouchableOpacity
+            onPress={() => navigate('Settings')}>
+                    <MaterialIcons name="arrow-back-ios" size={28} color="#3c82f6" />
+                </TouchableOpacity>
+            </View>
+          )}
+
         else{
           return(
            <View style={{ marginLeft: 20 }}>
@@ -58,6 +69,11 @@ const AppContainer = () => {
           name = 'Settings'
           component = {SettingsScreen}
           options = { stackOptions('Settings') }
+          />
+        <Stack.Screen
+          name = 'Preferences'
+          component = {PreferencesScreen}
+          options = { stackOptions('Preferences') }
           />
       </Stack.Navigator>
     </NavigationContainer>

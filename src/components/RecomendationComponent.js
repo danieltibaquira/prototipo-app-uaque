@@ -4,11 +4,13 @@ import { TextInput } from 'react-native-gesture-handler';
 import { Button, Text, Overlay, Input } from 'react-native-elements';
 import StarRating from 'react-native-star-rating';
 import { AntDesign } from '@expo/vector-icons';
+import { Context } from '../context/PerfilGrupalContext';
 
 const RecomendationComponent = (props) =>{
 
   const document = props.data;
   const [feedback, setFeedback] = useState(false);
+  const { saveFeedback } = useContext(Context);
 
   return(
     <View style={styles.contStyle}>
@@ -22,10 +24,20 @@ const RecomendationComponent = (props) =>{
           Ubicación: {document.location}
         </Text>
         <View style={styles.feedbackContainer}>
-          <TouchableOpacity style={{marginHorizontal: 24}} onPress={()=>console.log("uncool")}>
+          <TouchableOpacity style={{marginHorizontal: 24}} onPress={()=>saveFeedback({
+            itemId: document.itemId,
+            userId: '6466dbb15c41fdacb59eb1179817958de2c57191',
+            score: -1,
+            groupId: '809'
+          })}>
             <AntDesign name="dislike1" size={32} color="#e32d55" />
           </TouchableOpacity>
-          <TouchableOpacity style={{marginHorizontal: 24}} onPress={()=>console.log("cool")}>
+          <TouchableOpacity style={{marginHorizontal: 24}} onPress={()=>saveFeedback({
+            itemId: document.itemId,
+            userId: '6466dbb15c41fdacb59eb1179817958de2c57191',
+            score: 1,
+            groupId: '809'
+          })}>
             <AntDesign name="like1" size={32} color="#47d679" />
           </TouchableOpacity>
         </View>

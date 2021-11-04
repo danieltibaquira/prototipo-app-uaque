@@ -17,27 +17,6 @@ const HomeScreen = ({navigation}) =>{
 
   // console.log(state.recommendations);
 
-  const fakeDocs = [
-    {
-        name: "Mip-NeRF: A Multiscale Representation for Anti-Aliasing Neural Radiance Fields.",
-        authors: "Jonathan T. Barron, Ben Mildenhall, Matthew Tancik, Peter Hedman, Ricardo Martin-Brualla, Pratul P. Srinivasan ",
-        doi: "DOI:2103.13415v2",
-        feedback: 5.0
-    },
-    {
-        name: "Towards Real-World Blind Face Restoration with Generative Facial Prior",
-        authors: "Xintao Wang, Yu Li, Honglun Zhang, Ying Sha",
-        doi: "DOI:2103.13415v2",
-        feedback: 4.6
-    },
-    {
-        name: "NerfingMVS: Guided Optimization of Neural Radiance Fields for Indoor Multi-view Stereo",
-        authors: "Yi Wei, Shaohui Liu, Yongming Rao, Wang Zhao, Jiwen Lu, Jie zhou",
-        doi: "DOI:2103.13415v2",
-        feedback: 4.2
-    },
-  ];
-
   const openRecModal = () =>{
     setVisi(!visi);
   }
