@@ -11,6 +11,7 @@ const RecomendationComponent = (props) =>{
   const document = props.data;
   const [feedback, setFeedback] = useState(false);
   const { saveFeedback } = useContext(Context);
+  const DANIEL = '6466dbb15c41fdacb59eb1179817958de2c57191';
 
   return(
     <View style={styles.contStyle}>
@@ -26,7 +27,7 @@ const RecomendationComponent = (props) =>{
         <View style={styles.feedbackContainer}>
           <TouchableOpacity style={{marginHorizontal: 24}} onPress={()=>saveFeedback({
             itemId: document.itemId,
-            userId: '6466dbb15c41fdacb59eb1179817958de2c57191',
+            userId: DANIEL,
             score: -1,
             groupId: '809'
           })}>
@@ -34,7 +35,7 @@ const RecomendationComponent = (props) =>{
           </TouchableOpacity>
           <TouchableOpacity style={{marginHorizontal: 24}} onPress={()=>saveFeedback({
             itemId: document.itemId,
-            userId: '6466dbb15c41fdacb59eb1179817958de2c57191',
+            userId: DANIEL,
             score: 1,
             groupId: '809'
           })}>

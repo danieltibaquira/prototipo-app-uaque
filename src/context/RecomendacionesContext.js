@@ -18,7 +18,7 @@ const RecommendationsReducer = (state, action) => {
 
 const getRecommendation = (dispatch) => async() => {
 	try{
-	  const response = await instance.get(`api/suj-i-009?groupId=${SEBASTIAN}`);
+	  const response = await instance.get(`api/suj-i-009?groupId=${DANIEL}`);
 		dispatch({type: 'getRecommendation', data: response.data});
 	}catch(err){
 		console.error(err);

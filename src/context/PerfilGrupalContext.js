@@ -18,7 +18,7 @@ const saveFeedback = (dispatch) => async({
     groupId
 }) => {
 	try{
-        console.log("Calificacion: ", score, " para el item: ", itemId);
+        console.log("Calificacion: ", score, " para el item: ", itemId, " del usuario: ", userId);
 		const response = await instance.post('/feedback', {
             itemId,
             userId,
